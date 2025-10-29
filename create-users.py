@@ -51,7 +51,7 @@ def main():
         os.system(cmd)
 
         for group in groups:
-            #Checks for '-' if tied to user and assigns them a certain group, and if not ties them to a different group
+            #Checks for '-' if tied to user and does not assign them a group, and if it is not found on a user they are placed into their specified groups
             if group != '-':
                 print("==> Assigning %s to the %s group..." % (username,group))
                 cmd = "/usr/sbin/adduser %s %s" % (username,group)
