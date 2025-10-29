@@ -3,69 +3,61 @@
 # INET4031
 # Hunter Mocling
 # Data Created: October 27, 2025
-# Date Last Modified: October 27,2025
+# Date Last Modified: October 28,2025
 
-#REPLACE THIS COMMENT - identify what each of these imports is for.
+# The import os gives the program access to commands for os, regular expressions matching for import re, and import sys allows for the program to access system functions
 import os
 import re
 import sys
 
-#YOUR CODE SHOULD HAVE NONE OF THE INSTRUCTORS COMMENTS REMAINING WHEN YOU ARE FINISHED
-#PLEASE REPLACE INSTRUCTOR "PROMPTS" WITH COMMENTS OF YOUR OWN
 
 def main():
     for line in sys.stdin:
 
-        #REPLACE THIS COMMENT - this "regular expression" is searching for the presence of a character - what is it and why?
-        #The important part is WHY it is looking for a particular characer - what is that character being used for?
+        #Checks for any lines that begin with the # symbol, noting that it should be skipped
         match = re.match("^#",line)
 
-        #REPLACE THIS COMMENT - why is the code doing this?
+        #Splits line with ':' after removing any whitespaces
         fields = line.strip().split(':')
 
-        #REPLACE THESE COMMENTS with a single comment describing the logic of the IF 
-        #what would an appropriate comment be for describing what this IF statement is checking for?
-        #what happens if the IF statement evaluates to true?
-        #how does this IF statement rely on what happened in the prior two lines of code? The match and fields lines.
-        #the code clearly shows that the variables match and the length of fields is being checked for being != 5  so why is it doing that?
+        #Skips comment lines or if it does not have 5 fields
         if match or len(fields) != 5:
             continue
 
-        #REPLACE THIS COMMENT - what is the purpose of the next three lines. How does it relate to what is stored in the passwd file?
+        #Gives variables for user info from the inpuit file, gecos field is being created with combination of other data fields
         username = fields[0]
         password = fields[1]
         gecos = "%s %s,,," % (fields[3],fields[2])
 
-        #REPLACE THIS COMMENT - why is this split being done?
+        #Splitting the last field with commas for user groups
         groups = fields[4].split(',')
 
-        #REPLACE THIS COMMENT - what is the point of this print statement?
+        #Shows that a new user is being made
         print("==> Creating account for %s..." % (username))
-        #REPLACE THIS COMMENT - what is this line doing?  What will the variable "cmd" contain.
+        #Creates user without password, and cmd is being stored executes the creation of user
         cmd = "/usr/sbin/adduser --disabled-password --gecos '%s' %s" % (gecos,username)
 
-        #REMOVE THIS COMMENT AFTER YOU UNDERSTAND WHAT TO DO - these statements are currently "commented out" as talked about in class
-        #The first time you run the code...what should you do here?  If uncommented - what will the os.system(cmd) statemetn attempt to do?
+        #print cmdd helps with coding and fixing bugs like (dry runs), os.system(cmd) executes the creation of user stored in the cmd as shown above
         #print cmd
-        #os.system(cmd)
+        os.system(cmd)
 
-        #REPLACE THIS COMMENT - what is the point of this print statement?
+        #Shows password being made for the created user
         print("==> Setting the password for %s..." % (username))
-        #REPLACE THIS COMMENT - what is this line doing?  What will the variable "cmd" contain. You'll need to lookup what these linux commands do.
+        #cmd in this case is being store with the action of getting password from input file
         cmd = "/bin/echo -ne '%s\n%s' | /usr/bin/sudo /usr/bin/passwd %s" % (password,password,username)
 
-        #REMOVE THIS COMMENT AFTER YOU UNDERSTAND WHAT TO DO - these statements are currently "commented out" as talked about in class
-        #The first time you run the code...what should you do here?  If uncommented - what will the os.system(cmd) statemetn attempt to do?
+        #Executes cmd to set password to user
         #print cmd
-        #os.system(cmd)
+        os.system(cmd)
 
         for group in groups:
-            #REPLACE THIS COMMENT with one that answers "What is this IF statement looking for and why? If group !='-' what happens?"
+            #Checks for '-' if tied to user and assigns them a certain group, and if not ties them to a different group
             if group != '-':
                 print("==> Assigning %s to the %s group..." % (username,group))
                 cmd = "/usr/sbin/adduser %s %s" % (username,group)
                 #print cmd
-                #os.system(cmd)
+                os.system(cmd)
 
 if __name__ == '__main__':
     main()
+
