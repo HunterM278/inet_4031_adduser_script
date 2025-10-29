@@ -1,4 +1,4 @@
-# inet_4031_adduser_script
+`# inet_4031_adduser_script
 Repository for code and files for INET4031 Lab 8 part 2
 ## Program Description
 This program has a python script that automatically adds multiple users, their informations, and sorts them into groups to in the Ubuntu system. The information comes from a input file that holds the users data and is read by the script and automatically filled in, without having to be entered manually by a user.
@@ -12,6 +12,12 @@ There are five fields in the file that are separated by colons ':' that are tied
 Any line in the input file that begins with a '#' symbol is skipped
 
 If a user is found with the '-' symbol they will not be assigned to a group
+Example:
+
+```
+#user08:pass08:Last08:First08:group01
+user09:Last09:First09:group09
+```
 
 ## Command Execution
 Make the file executable with the command:
