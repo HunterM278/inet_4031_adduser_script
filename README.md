@@ -16,7 +16,7 @@ If a user is found with the '-' symbol they will not be assigned to a group
 ##### Command Execution
 Make the file executable with the command:
 
-> chmod +x create-users.py
+> '''chmod +x create-users.py
 
 Run the file with the command:
 './create-users.py < create-users.input'
