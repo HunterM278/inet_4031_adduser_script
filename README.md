@@ -26,3 +26,4 @@ Run the file with the command:
 ./create-users.py < create-users.input
 ```
 ###### Dry Run
+Dry run allows the user to test what a script would do without actually executing it. This allows the user to see how it looks and verify that the script is doing what it is supposed to do without the script making any changes.
