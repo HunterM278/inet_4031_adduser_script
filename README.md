@@ -12,6 +12,7 @@ There are five fields in the file that are separated by colons ':' that are tied
 Any line in the input file that begins with a '#' symbol is skipped
 
 If a user is found with the '-' symbol they will not be assigned to a group
+
 Example:
 
 ```
