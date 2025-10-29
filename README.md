@@ -10,3 +10,14 @@ Script contained in this repository automates the creation of new user accounts 
 There are five fields in the file that are separated by colons ':' that are tied to username, password, lastname, firstname, and groups that they belong to.
 
 Any line in the input file that begins with a '#' symbol is skipped
+
+If a user is found with the '-' symbol they will not be assigned to a group
+
+##### Command Execution
+Make the file executable with the command:
+'chmod +x create-users.py'
+
+Run the file with the command:
+'./create-users.py < create-users.input'
+
+###### Dry Run
